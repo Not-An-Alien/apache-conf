@@ -14,7 +14,7 @@ organizationalunit=IT
 email=hosting@rvadv.com
 
 #Optional
-# password=dummypassword
+password=dummypassword
 
 if [ -z "$domain" ]
 then
