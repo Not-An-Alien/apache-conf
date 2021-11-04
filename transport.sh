@@ -1,4 +1,8 @@
 #!/bin/bash
+echo "Please enter the db user of the og box"
+read ogUser
+echo "Please enter the db user of the new box"
+read newUser
 echo "Please enter the password of the og box"
 read ogPass
 echo "Please enter the password of the new box"
@@ -12,9 +16,9 @@ read oldDB
 echo "enter the name of the new boxes database" 
 read newDB 
 echo "scping everything over to the new box!"
-sudo sshpass -p$newPass scp -r /var/www/html root@$newIP:/var/www/
+sudo sshpass -p$newPass scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -r /var/www/html root@$newIP:/var/www/
 echo "scp complete"
 echo "Starting database dump"
-mysqldump -u root -p$ogPass $oldDB | mysql -h $newIP -u rvadmin -p$newPass avidcollectiondb
+mysqldump -u $ogUser -p$ogPass $oldDB | mysql -h $newIP -u $newUser -p$newPass $newDB
 echo "dumpComplete"
 
