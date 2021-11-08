@@ -1,4 +1,5 @@
 #!/bin/bash
+sudo apt install sshpass -y 
 echo "Please enter the db user of the og box"
 read ogUser
 echo "Please enter the db user of the new box"
